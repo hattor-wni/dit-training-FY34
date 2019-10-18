@@ -1,4 +1,4 @@
-Sample Project
+Project X
 ===
 
 This is a README file for my own project written in Markdown.
@@ -23,3 +23,10 @@ Sectiom 3
 1. aaa
 2. bbb
 3. ccc
+
+Section 4
+----
+
+* あいうえお
+* かきくけこ
+* さしすせそ
