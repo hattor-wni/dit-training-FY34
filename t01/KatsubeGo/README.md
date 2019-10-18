@@ -1,7 +1,7 @@
 Project X
 ===
 
-This is a README file for my own project written in Markdown.
+Welcome to Project X!
 
 Section 1
 ----
