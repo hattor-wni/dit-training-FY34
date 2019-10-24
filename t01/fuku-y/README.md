@@ -17,7 +17,7 @@ Section 2
 2. bar
 3. baz
 
-Sectiom 3
+Section 3
 ----
 
 1. aaa
