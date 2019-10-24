@@ -144,7 +144,7 @@
 * チェックアウト：
   リポジトリから特定のコミットを取り出して一連のファイルとして展開すること。
 
-![](images/t01-vcs-terms-ops.png)
+![](images/t01-vcs-terms-ops.jpg)
 
 ### 履歴関連のもの
 
@@ -155,7 +155,7 @@
 * タグ：
   リリースなどを特定できるよう、特定のコミットにつけたラベル。
 
-![](images/t01-vcs-terms-history.png)
+![](images/t01-vcs-terms-history.jpg)
 
 ### 他人のリポジトリとのやりとりに必要なもの
 
@@ -166,7 +166,7 @@
 * プルリクエスト：
   プルして！（私の変更内容を取り込んで！）というリクエスト
 
-![](images/t01-vcs-terms-push-pull.png)
+![](images/t01-vcs-terms-push-pull.jpg)
 
 ## バージョン管理の流れ
 
