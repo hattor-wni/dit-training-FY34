@@ -1,0 +1,50 @@
+foo@20a5fbc8e735:~$ ls
+hello-local.py  hello-none.py  hello-pl.py  hello-py.py  hello.py
+
+・python3 foobar.py は全て実行できた。
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         59  0.0  0.3  13960  7868 pts/0    S+   08:26   0:00 python3 hello-local.py
+foo         61  0.0  0.3  13960  7924 pts/1    S+   08:27   0:00 python3 hello-none.py
+他同様
+
+・先頭に「python3」とつけることで、どの言語で書かれているかを指定できるから。
+
+・./foober.py で実行できたのは、hello.pyのみ
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss   08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss   08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss+  08:08   0:00 /bin/bash
+foo         70  0.0  0.3  13960  8000 pts/0    S+   08:33   0:00 /usr/bin/python3 ./hello.py
+
+・実行はできたが、COMMANDの部分が少し違う。
+foo@20a5fbc8e735:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+・前者はPATHが通っているところにpython3があるから、それがコマンドとして機能しているイメージ。
+・後者はシバンで指定したパスを見に行って実行しているイメージ？？
+
+・以下、エラー一覧
+
+	bash: ./hello-local.py: /usr/local/bin/python3: bad interpreter: No such file or directory
+
+	./hello-none.py: line 1: import: command not found
+	./hello-none.py: line 4: syntax error near unexpected token `1'
+	./hello-none.py: line 4: `    time.sleep(1)'
+
+	syntax error at ./hello-pl.py line 3, near "import time"
+	Execution of ./hello-pl.py aborted due to compilation errors.
+
+	bash: ./hello-py.py: /usr/bin/python: bad interpreter: No such file or directory
+
+・考察；
+hello-local.py => シバンで指定したパスに該当するインタープリタが存在しない。
+hello-py.py => 同じ。
+hello-pl.py => シバンで指定したパスにperlインタープリタがあり、プログラムを実行することはできるが、そもそも書かれている言語が違うので文法エラー。
+hello-none.py => シバンがないので、コマンドラインに直接打ち込んでいるような感じになる？調べる必要あり。
+
+
