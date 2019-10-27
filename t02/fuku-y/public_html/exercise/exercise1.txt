@@ -1,0 +1,44 @@
+foo@20a5fbc8e735:~$ ps auxww	(初期状態)
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3336 pts/0    Ss+  08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3264 pts/1    Ss+  08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3308 pts/2    Ss   08:08   0:00 /bin/bash
+foo         47  0.0  0.1   7636  2764 pts/2    R+   08:19   0:00 ps auxww
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3336 pts/0    Ss   08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3264 pts/1    Ss   08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3308 pts/2    Ss   08:08   0:00 /bin/bash
+foo         42  0.0  0.0   2292   752 pts/0    S+   08:14   0:00 sleep 30
+foo         43  0.2  0.3  13960  8008 pts/1    S+   08:14   0:00 /usr/bin/python3 ./hello.py
+foo         44  0.0  0.1   7636  2704 pts/2    R+   08:14   0:00 ps auxww
+
+foo@20a5fbc8e735:~$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         32  0.0  0.1   3996  3308 pts/2    Ss   08:08   0:00 /bin/bash
+foo         45  0.0  0.1   7636  2708 pts/2    R+   08:14   0:00  \_ ps auxwwf
+foo         24  0.0  0.1   3996  3264 pts/1    Ss   08:08   0:00 /bin/bash
+foo         43  0.2  0.3  13960  8008 pts/1    S+   08:14   0:00  \_ /usr/bin/python3 ./hello.py
+foo         18  0.0  0.1   3996  3336 pts/0    Ss   08:08   0:00 /bin/bash
+foo         42  0.0  0.0   2292   752 pts/0    S+   08:14   0:00  \_ sleep 30
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3336 pts/0    Ss+  08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3264 pts/1    Ss   08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3308 pts/2    Ss   08:08   0:00 /bin/bash
+foo         43  0.0  0.3  13960  8008 pts/1    S+   08:14   0:00 /usr/bin/python3 ./hello.py
+foo         46  0.0  0.1   7636  2792 pts/2    R+   08:15   0:00 ps auxww
+
+・「ps auxwwf」のfはプロセスの親子関係がわかる。今までは「ps aux」のオプションしか使っていなかった。
+・STAT（STATUS）も細かく見れば変化している。（が、キリがないのでここでは触れない。）
+・親子関係がわかるのは面白い。最近、PerlでForkさせるプログラムを作ったので、それが実行されているときに見てみようと思う。

@@ -1,0 +1,49 @@
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss   08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss+  08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss   08:08   0:00 /bin/bash
+foo         86  0.4  0.3  13960  7856 pts/0    S+   09:04   0:00 /usr/bin/python3 ./hello.py
+foo         87  0.0  0.1   7636  2672 pts/2    R+   09:04   0:00 ps auxww
+
+・Ctrl Z
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss+  08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss+  08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss   08:08   0:00 /bin/bash
+foo         86  0.1  0.3  13960  7856 pts/0    T    09:04   0:00 /usr/bin/python3 ./hello.py
+foo         88  0.0  0.1   7636  2692 pts/2    R+   09:04   0:00 ps auxww
+
+・残っているが、ステータスが変化
+・Ctrl C
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss+  08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss+  08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss   08:08   0:00 /bin/bash
+foo         86  0.0  0.3  13960  7856 pts/0    T    09:04   0:00 /usr/bin/python3 ./hello.py
+foo         89  0.0  0.1   7636  2752 pts/2    R+   09:06   0:00 ps auxww
+
+・残っている。ステータスに変化なし、CPU利用率に変化？（誤差？）
+・fg
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss   08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss+  08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss   08:08   0:00 /bin/bash
+foo         86  0.0  0.3  13960  7856 pts/0    S+   09:04   0:00 /usr/bin/python3 ./hello.py
+foo         90  0.0  0.1   7636  2720 pts/2    R+   09:08   0:00 ps auxww
+
+・便利ですね。
