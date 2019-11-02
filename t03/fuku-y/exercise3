@@ -1,0 +1,39 @@
+Every 1.0s: ps auxwwf                                                                  6a57eaa4a3dd: Sat Nov  2 03:14:12 2019
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         10  0.0  0.1   5748  3668 pts/0    Ss   03:11   0:00 /bin/bash
+foo         18  0.1  0.1   4740  2712 pts/0    S+   03:13   0:00  \_ watch -n 1 ps auxwwf
+foo         58  0.0  0.0   4740   452 pts/0    S+   03:14   0:00      \_ watch -n 1 ps auxwwf
+foo         59  0.0  0.0   2384   700 pts/0    S+   03:14   0:00          \_ sh -c ps auxwwf
+foo         60  0.0  0.1   9388  3128 pts/0    R+   03:14   0:00              \_ ps auxwwf
+root         1  0.0  1.2  33296 26604 ?        Ss   02:31   0:00 python app.py
+root         7  0.7  1.3 106852 26868 ?        Sl   02:31   0:19 /usr/local/bin/python /app/sleepy/app.py
+
+・ずっとこれから変化なし。
+・そういえば、演習2のほうはPID1のrootはhttpdなんちゃらだったが、こっちはpython app.pyになっている。
+・気になったのでDockerfileを見てみると
+FROM python:3.8.0-buster
+  
+RUN useradd -m foo -s /bin/bash
+
+RUN pip install Flask==1.1.1
+
+ARG project_dir=/app/sleepy
+WORKDIR $project_dir
+COPY app.py $project_dir
+
+CMD ["python", "app.py"]  <------------こいつが最初から起動していて、外からのこれへのアクセスにも対応できるような状況になっている感じ（Flaskのおかげ？）Flaskがサーバーの役割をもっているから？
+・つまり、自分でできちゃうからプロセスを増やす必要がない？
+
+・演習2ほうは、
+CMD ["httpd-foreground"]  だった。CGIはそれだけではサーバーの役割を持っておらず、デーモンサーバの助けをもらってやっと起動されるという感覚に変わった。正しいかはわからないが。
+
+・横道に逸れたが、ターミナル2と3でたしかに、片方が終わってからもう片方の計算が行われたのが確認できた。
+[2019-11-02 03:54:50] ...zzz
+* Closing connection 0
+[2019-11-02 03:55:00] Good morning, world...
+						<-------- ターミナル2での終了時刻が3での開始時刻と一致している。
+[2019-11-02 03:55:00] ...zzz
+* Closing connection 0
+[2019-11-02 03:55:10] Good morning, world...
+

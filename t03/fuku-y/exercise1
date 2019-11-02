@@ -1,0 +1,25 @@
+foo@e82ea7f7a731:/usr/local/apache2/htdocs$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo        121  0.0  0.1   4000  3228 pts/0    Ss   02:47   0:00 /bin/bash
+foo        130  0.0  0.1   7636  2704 pts/0    R+   02:47   0:00  \_ ps auxwwf
+root         1  0.0  0.2   5988  4452 ?        Ss   02:31   0:00 httpd -DFOREGROUND
+daemon       7  0.0  0.1   5672  2560 ?        S    02:31   0:00 httpd -DFOREGROUND
+daemon     128  1.0  0.7  21632 14764 ?        S    02:47   0:00  \_ /usr/bin/python3 /usr/local/apache2/htdocs/app.py
+daemon     129  1.0  0.7  21632 14664 ?        S    02:47   0:00  \_ /usr/bin/python3 /usr/local/apache2/htdocs/app.py
+daemon       8  0.0  0.1 1210744 3628 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon       9  0.0  0.1 1210712 3620 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      10  0.0  0.1 1210648 3632 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      93  0.0  0.1 1210680 3636 ?        Sl   02:46   0:00 httpd -DFOREGROUND
+
+・親はプロセス番号7のhttpd -DFOREGROUNDだった。調べたらwebサーバーのデーモンと解釈した。
+
+foo@e82ea7f7a731:/usr/local/apache2/htdocs$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo        121  0.0  0.1   4000  3228 pts/0    Ss   02:47   0:00 /bin/bash
+foo        131  0.0  0.1   7636  2724 pts/0    R+   02:48   0:00  \_ ps auxwwf
+root         1  0.0  0.2   5988  4452 ?        Ss   02:31   0:00 httpd -DFOREGROUND
+daemon       7  0.0  0.1   5672  2560 ?        S    02:31   0:00 httpd -DFOREGROUND
+daemon       8  0.0  0.1 1210776 3628 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon       9  0.0  0.1 1210712 3620 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      10  0.0  0.1 1210648 3632 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      93  0.0  0.1 1210680 3636 ?        Sl   02:46   0:00 httpd -DFOREGROUND
