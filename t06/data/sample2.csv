@@ -1,0 +1,4 @@
+first_name,family_name,age
+# this line should be ignored!
+Taro,Yamada,30
+Hanako,Yamada,25
