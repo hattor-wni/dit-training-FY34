@@ -316,7 +316,8 @@ LLVMのとあるクラス関係図：
   （さらにいえば定義部分へとジャンプしてくれる機能）
 
 特にアウトライン機能は有用で、
-たとえば下の1つ目の図では「ほとんどdocstringでコードがない」などと一発でわかる。
+たとえば下の1つ目の図では右端のアウトラインがほぼ茶色一色なので、
+「ほとんどdocstringでコードがない」と一発でわかる。
 
 ![](images/t13-vscode-requests-example1.png)
 ![](images/t13-vscode-requests-example2.png)
