@@ -2,7 +2,7 @@
 
 ## 概要
 
-今回はコードリーディング、つまりコードを読む方法の話をし、一緒に読んでいきます。
+今回はコードリーディング、つまりコードを読む方法の話をし、一緒に読んでみます。
 
 プログラミングスキルを上げるには、ソースコードを書くことも大切ですが、
 きちんと書かれたソースコードを読むことも非常に大切です。
@@ -26,6 +26,8 @@
 
 * 何故ソースコードを読むのか
 * ソースコードの読み方の違い
+* 「ソースコードを読む」という作業の全貌
+* 「ソースコードを読む」具体的な作業
 
 ## 何故ソースコードを読むのか
 
@@ -39,6 +41,9 @@
   * ドキュメントがないのでソースコードを読んで理解しないといけない、
     あるいはたとえドキュメントがしっかり書かれていても、所詮は他人のコードなので、
     読まないとわからない。
+* コードレビューの一環として
+  * ソースコードの品質を担保するには、他人に読んでもらうことが重要。
+    読まれないソースコードには、かなりの確率でバグがある。
 
 それ以外に、こんな能動的な理由もあるかもしれない。
 
@@ -160,7 +165,8 @@ JavaならJavaDoc、PythonならPyDoc、RubyならRDocなど、
 この「コメント」は、Javaではdocumentation commentと呼ばれる。
 Pythonの場合はdocstringという。
 
-例：XXX
+例：
+* [pandas.DataFrameのdocstringから生成されたAPIドキュメント](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
 
 ### テストコードやサンプルコードを読む
 
@@ -172,8 +178,7 @@ Pythonの場合はdocstringという。
 これを読めば関数の理解につながる（ただしこのコードはリフレクションを用いており、
 テストフレームワークも動的な機能を用いているため、慣れないと読めないかも）。
 
-XXX
-e0c63b4cfaa821dfe310f4a8a1f84929ced5f5bd
+[commit e0c63b4cfaa821dfe310f4a8a1f84929ced5f5bd](https://github.com/pandas-dev/pandas/commit/e0c63b4cfaa821dfe310f4a8a1f84929ced5f5bd)
 
 ```.py
 @pytest.mark.parametrize(
@@ -242,8 +247,12 @@ def test_shift_bfill_ffill_tz(tz_naive_fixture, op, expected):
     tm.assert_frame_equal(result, expected)
 ```
 
-（`getattr(grouped, op)()`は、
-たとえば`op`が`"shift"`なら`grouped.shift()`という呼び出しとなる。）
+簡単な説明：
+`@pytest.mark.parametrize`で与えたデータ3パターン、
+および`tz_naive_fixture`で与えた様々なタイムゾーン（Nパターン）について、
+関数内のテストを実行している。
+`getattr(grouped, op)()`は、
+たとえば`op`が`"shift"`なら`grouped.shift()`という呼び出しとなる（文字列をもとにメソッドを見つけて実行している）。
 
 ### クラスや関数の一覧を俯瞰する
 
@@ -255,6 +264,9 @@ def test_shift_bfill_ffill_tz(tz_naive_fixture, op, expected):
 クラスの親子関係を可視化したり、
 関数が他の関数からどのように呼び出され、どのように呼び出しているかを可視化したりするのも、
 全体を把握するのに大切である。
+これだけですべてが把握できるわけではないが、参考にはなる。
+
+[](images/t13-detect.png)
 
 ### エディタや統合開発環境の機能を用いて表示を工夫し理解を促進する
 
