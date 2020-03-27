@@ -17,7 +17,7 @@ Section 2
 2. bar
 3. baz
 
-Sectiom 3
+Section 3
 ----
 
 1. aaa
@@ -30,3 +30,10 @@ Section 4
 * あいうえお
 * かきくけこ
 * さしすせそ
+
+Section5
+----
+
+1. strawberry
+2. panda
+3. snowboard
