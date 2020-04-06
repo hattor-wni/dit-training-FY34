@@ -1,0 +1,22 @@
+ターミナル1
+foo@6bf2abb18f84:~$ ./hello.py 
+Hello world!
+Hello world!
+Hello world!
+Hello world!
+Hello world!
+Hello world!
+Hello world!
+Hello world!
+
+=====
+
+ターミナル2
+
+foo@6bf2abb18f84:~$ ./hello.py
+HELLO world!
+HELLO world!
+HELLO world!
+HELLO world!
+HELLO world!
+HELLO world!
