@@ -1,0 +1,29 @@
+curl -X POST --data-urlencode sql='SELECT * FROM users' http://localhost:10085/
+[
+  {
+    "age": 20, 
+    "firstname": "Taro", 
+    "lastname": "Yamada", 
+    "password": "aaaa", 
+    "username": "taro"
+  }, 
+  {
+    "age": 18, 
+    "firstname": "Jiro", 
+    "lastname": "Yamada", 
+    "password": "abcdefgh", 
+    "username": "jiro"
+  }, 
+  {
+    "age": 25, 
+    "firstname": "Hanako", 
+    "lastname": "Chiba", 
+    "password": "1234567890", 
+    "username": "hanako"
+  }
+]
+・「世界最悪の・・・」を見た。なにが最悪なのか、ひとつは、forループでDBを全部（登録されたユーザ全員分）見に行っていることだと思う。usernameの存在判定は簡単にできるのだからそこでまずフィルタすべきなのではと思った。（演習5と同じ）
+・そもそもJSで書かれているということはクライアントサイドに送られてくるので、自分もよく使ってるデベロッパーツールとかで見えてしまう？認証方法が見えてしまうのはまずいと思う。
+・スクリプト下部のcookie周辺の知識は皆無で全く意味がわからなかったので、勉強します。
+・ここでこのスクリプトを解説しているサイトをカンニングしたら、パスワードが平文で残されていることや、Cookieの認証がザルということが書かれていた。
+

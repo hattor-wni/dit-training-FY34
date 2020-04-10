@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<orderhistory>
+  <order>
+    <date>2019-11-01T11:11Z</date>
+    <item>スポーツ飲料</item>
+    <price>150</price>
+    <amount>5</amount>
+  </order>
+  <order>
+    <date>2019-10-31T07:00Z</date>
+    <td>菓子</td>
+    <td>100円</td>
+    <td>20袋</td>
+  </order>
+</orderhistory>

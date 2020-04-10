@@ -1,0 +1,25 @@
+foo@20a5fbc8e735:~$ sed -ie "s/Hello/HELLO/" hello.py
+foo@20a5fbc8e735:~$ cat hello.py
+#!/usr/bin/python3
+
+import time
+
+while True:
+    time.sleep(1)
+    print("HELLO world!")
+
+・確かに、変わっている。
+
+
+foo@20a5fbc8e735:~$ ./hello.py 
+HELLO world!
+HELLO world!
+HELLO world!
+（ターミナル2）
+
+・ターミナル1は依然変わらない。
+・不思議だ・・・試しにさっきのCtrl Z 、fgをやってみたが変化なし。
+
+・ということは、プログラムを実行すると、長時間実行されっぱなしのプログラムも元のスクリプトを見に行っているわけではなく、プロセスとしてその内容を記憶というかどこかに保存してしまう的な
+
+

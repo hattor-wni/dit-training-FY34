@@ -1,0 +1,44 @@
+・各ファイルの中身を見てみた。
+	app.py ---> Flask使ったサーバー兼処理アプリ、今回は、GETメソッドを受け取ることもできるようになっていた
+	init.py---> データベースをあらかじめ作るスクリプト
+どっちも最初から起動されていてほしいものだということはわかった。
+・とりあえずDockerfileを覗いてみた。
+FROM python:3.8.0-buster
+  
+RUN useradd -m foo -s /bin/bash
+
+RUN pip install Flask==1.1.1
+
+ARG project_dir=/app/db/
+WORKDIR $project_dir
+COPY app.py init.py $project_dir
+RUN python init.py		<----
+					この、RUNとCMDは似てるような・・・何が違うのか？
+CMD ["python", "app.py"]	<----
+
+と思って調べたところ、
+* RUN：ビルド時にコンテナ内で実行される
+* CMD：完成したイメージからコンテナを作成するときに実行される　　らしい。勉強になった。
+
+・また横道に逸れたが、実際にブラウザでアクセスしてみた　http://localhost:10084/?field=firstname&username=taro
+[
+  {
+    "firstname": "Taro"
+  }
+]
+・http://localhost:10084/?field=*&username=taro
+[
+  {
+    "age": 20, 
+    "firstname": "Taro", 
+    "lastname": "Yamada", 
+    "password": "aaaa", 
+    "username": "taro"
+  }
+]
+・入力を直接埋め込んでいるというのはこれですよね
+field = request.args.get('field', '')
+username = request.args.get('username', '')
+sql = f"SELECT {field} FROM users WHERE username = '{username}'" <--これ
+・はっきりと掴めなかったのですが、sql の文の前にifかなにかで条件判定をしてやればいいのでしょうか。
+・ワイルドカードの使用を防ぐには、usernameに代入された値が、DBのusername列に存在するかどうかをみることが最優先ということになるのではと思います。

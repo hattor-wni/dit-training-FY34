@@ -1,0 +1,28 @@
+--- httpd.conf.bak	2019-10-17 11:27:04.000000000 +0900
++++ httpd.conf	2019-10-28 16:14:14.000000000 +0900
+@@ -181,7 +181,7 @@
+ #LoadModule info_module modules/mod_info.so
+ #LoadModule suexec_module modules/mod_suexec.so
+ <IfModule !mpm_prefork_module>
+-	#LoadModule cgid_module modules/mod_cgid.so
++	LoadModule cgid_module modules/mod_cgid.so
+ </IfModule>
+ <IfModule mpm_prefork_module>
+ 	#LoadModule cgi_module modules/mod_cgi.so
+@@ -276,7 +276,7 @@
+     # http://httpd.apache.org/docs/2.4/mod/core.html#options
+     # for more information.
+     #
+-    Options Indexes FollowSymLinks
++    Options Indexes FollowSymLinks ExecCGI
+ 
+     #
+     # AllowOverride controls what directives may be placed in .htaccess files.
+@@ -444,6 +444,7 @@
+     # (You will also need to add "ExecCGI" to the "Options" directive.)
+     #
+     #AddHandler cgi-script .cgi
++    AddHandler cgi-script .py
+ 
+     # For type maps (negotiated resources):
+     #AddHandler type-map var

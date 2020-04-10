@@ -1,0 +1,29 @@
+・プロセスに変化がないのは確認済み。
+
+[2019-11-02 03:59:17] ...zzz
+* Closing connection 0
+[2019-11-02 03:59:27] Good morning, world...
+					<-----計算時間が被っているところがある。
+[2019-11-02 03:59:19] ...zzz
+* Closing connection 0
+[2019-11-02 03:59:29] Good morning, world...
+
+・app.pyの中身
+from datetime import datetime
+import time
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/sleepy', methods=['GET'])
+def response_after_sleep():
+    time_fmt = "%Y-%m-%d %H:%M:%S"
+    req_time = datetime.now().strftime(time_fmt)
+    time.sleep(10)
+    res_time = datetime.now().strftime(time_fmt)
+    return f"[{req_time}] ...zzz\n[{res_time}] Good morning, world..."
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=80, threaded=True, debug=True)  <------「threaded」が演習3と違う。
+

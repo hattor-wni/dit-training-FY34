@@ -1,0 +1,20 @@
+cgi:
+  build: cgi
+  ports:
+    - "10081:80"
+webapp:
+  build: webapp
+  ports:
+    - "10082:80"
+webapp-threaded:
+  build: webapp-threaded
+  ports:
+    - "10083:80"
+wildcard:
+  build: wildcard
+  ports:
+    - "10084:80"
+api:
+  build: api
+  ports:
+    - "10085:80"

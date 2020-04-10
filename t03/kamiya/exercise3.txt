@@ -1,0 +1,22 @@
+foo@2fdac945111c:/app/sleepy$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         10  0.1  0.1   5752  3552 pts/0    Ss   07:23   0:00 /bin/bash
+foo         16  0.0  0.1   9392  3040 pts/0    R+   07:23   0:00  \_ ps auxwwf
+root         1  0.0  1.1  34068 24228 ?        Ss   06:56   0:00 python app.py
+root         7  0.5  1.2 107272 24456 ?        Sl   06:56   0:08 /usr/local/bin/python /app/sleepy/app.py
+
+
+foo@2fdac945111c:/app/sleepy$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         10  0.0  0.1   5752  3552 pts/0    Ss   07:23   0:00 /bin/bash
+foo         17  0.0  0.1   9392  3048 pts/0    R+   07:24   0:00  \_ ps auxwwf
+root         1  0.0  1.1  34068 24232 ?        Ss   06:56   0:00 python app.py
+root         7  0.6  1.2 107528 24728 ?        Sl   06:56   0:11 /usr/local/bin/python /app/sleepy/app.py
+
+
+foo@2fdac945111c:/app/sleepy$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         10  0.0  0.1   5752  3576 pts/0    Ss   07:23   0:00 /bin/bash
+foo         18  0.0  0.1   9392  3008 pts/0    R+   07:25   0:00  \_ ps auxwwf
+root         1  0.0  1.1  34068 24232 ?        Ss   06:56   0:00 python app.py
+root         7  0.6  1.2 107528 24876 ?        Sl   06:56   0:11 /usr/local/bin/python /app/sleepy/app.py
