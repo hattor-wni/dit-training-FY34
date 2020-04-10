@@ -1,0 +1,25 @@
+foo@c9b9d4542f3d:/usr/local/apache2/htdocs$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         92  0.0  0.1   4004  3252 pts/0    Ss   06:59   0:00 /bin/bash
+foo        132  0.0  0.1   7640  2764 pts/0    R+   07:02   0:00  \_ ps auxwwf
+root         1  0.0  0.2   5992  4580 ?        Ss   06:56   0:00 httpd -DFOREGROUND
+daemon       7  0.0  0.1   5676  2388 ?        S    06:56   0:00 httpd -DFOREGROUND
+daemon     130  1.0  0.7  21636 14820 ?        S    07:02   0:00  \_ /usr/bin/python3 /usr/local/apache2/htdocs/app.py
+daemon     131  1.5  0.7  21636 14700 ?        S    07:02   0:00  \_ /usr/bin/python3 /usr/local/apache2/htdocs/app.py
+daemon       8  0.0  0.1 1931644 3532 ?        Sl   06:56   0:00 httpd -DFOREGROUND
+daemon       9  0.0  0.1 1931596 3528 ?        Sl   06:56   0:00 httpd -DFOREGROUND
+daemon      10  0.0  0.1 1931556 3536 ?        Sl   06:56   0:00 httpd -DFOREGROUND
+daemon     100  0.0  0.1 1931556 3532 ?        Sl   07:00   0:00 httpd -DFOREGROUND
+
+
+
+foo@c9b9d4542f3d:/usr/local/apache2/htdocs$ ps auxwwf
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         92  0.0  0.1   4004  3252 pts/0    Ss   06:59   0:00 /bin/bash
+foo        133  0.0  0.1   7640  2732 pts/0    R+   07:03   0:00  \_ ps auxwwf
+root         1  0.0  0.2   5992  4580 ?        Ss   06:56   0:00 httpd -DFOREGROUND
+daemon       7  0.0  0.1   5676  2388 ?        S    06:56   0:00 httpd -DFOREGROUND
+daemon       8  0.0  0.1 1931644 3532 ?        Sl   06:56   0:00 httpd -DFOREGROUND
+daemon       9  0.0  0.1 1931612 3528 ?        Sl   06:56   0:00 httpd -DFOREGROUND
+daemon      10  0.0  0.1 1931556 3536 ?        Sl   06:56   0:00 httpd -DFOREGROUND
+daemon     100  0.0  0.1 1931556 3532 ?        Sl   07:00   0:00 httpd -DFOREGROUND
