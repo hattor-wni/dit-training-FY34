@@ -1,0 +1,43 @@
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss   08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss   08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss   08:08   0:00 /bin/bash
+foo         80  0.2  0.3  13960  8024 pts/0    S+   08:46   0:00 /usr/bin/python3 ./hello.py
+foo         81  0.2  0.3  13960  7976 pts/1    S+   08:46   0:00 /usr/bin/python3 ./hello.py
+foo         82  0.0  0.1   7636  2716 pts/2    R+   08:46   0:00 ps auxww
+
+・ここでControl + C
+^CTraceback (most recent call last):
+  File "./hello.py", line 6, in <module>
+    time.sleep(1)
+KeyboardInterrupt
+
+・Ctrl + C をされると、KeyboardInterrupt例外をキャッチして終了するのがPython3のデフォルトということなのか。
+・try exceptでその例外キャッチしても続けるようなプログラムを書いちゃうと、Control + C でも終われないということになる。
+
+foo@20a5fbc8e735:~$ ps auxww 
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss+  08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss   08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss   08:08   0:00 /bin/bash
+foo         81  0.0  0.3  13960  7976 pts/1    S+   08:46   0:00 /usr/bin/python3 ./hello.py
+foo         84  0.0  0.1   7636  2700 pts/2    R+   08:53   0:00 ps auxww
+
+foo@20a5fbc8e735:~$ kill 81
+
+・「terminated」と出ていた。
+
+foo@20a5fbc8e735:~$ ps auxww
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10624  5512 ?        Ss   08:03   0:00 nginx: master process nginx -g daemon off;
+nginx        9  0.0  0.1  11096  2620 ?        S    08:03   0:00 nginx: worker process
+foo         18  0.0  0.1   3996  3352 pts/0    Ss+  08:08   0:00 /bin/bash
+foo         24  0.0  0.1   3996  3272 pts/1    Ss+  08:08   0:00 /bin/bash
+foo         32  0.0  0.1   3996  3332 pts/2    Ss   08:08   0:00 /bin/bash
+foo         85  0.0  0.1   7636  2704 pts/2    R+   08:54   0:00 ps auxww
+

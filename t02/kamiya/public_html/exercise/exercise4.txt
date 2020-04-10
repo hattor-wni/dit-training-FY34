@@ -1,0 +1,20 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10632  5364 ?        Ss   01:55   0:00 nginx: master process nginx -g daemon off;
+nginx        6  0.0  0.1  11088  2588 ?        S    01:55   0:00 nginx: worker process
+foo          7  0.0  0.1   4000  3260 pts/0    Ss   02:07   0:00 /bin/bash
+foo         13  0.0  0.1   4000  3360 pts/1    Ss   02:08   0:00 bin/bash
+foo         21  0.0  0.1   4000  3264 pts/2    Ss   02:08   0:00 /bin/bash
+foo         58  0.0  0.3  13964  7988 pts/1    S+   02:33   0:00 /usr/bin/python3 ./hello.py
+foo         59  0.0  0.3  13964  7900 pts/0    S+   02:33   0:00 /usr/bin/python3 ./hello.py
+foo         60  0.0  0.1   7640  2636 pts/2    R+   02:34   0:00 ps auxww
+
+=====
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10632  5364 ?        Ss   01:55   0:00 nginx: master process nginx -g daemon off;
+nginx        6  0.0  0.1  11088  2588 ?        S    01:55   0:00 nginx: worker process
+foo          7  0.0  0.1   4000  3260 pts/0    Ss   02:07   0:00 /bin/bash
+foo         13  0.0  0.1   4000  3360 pts/1    Ss+  02:08   0:00 bin/bash
+foo         21  0.0  0.1   4000  3264 pts/2    Ss   02:08   0:00 /bin/bash
+foo         59  0.0  0.3  13964  7900 pts/0    S+   02:33   0:00 /usr/bin/python3 ./hello.py
+foo         61  0.0  0.1   7640  2720 pts/2    R+   02:34   0:00 ps auxww

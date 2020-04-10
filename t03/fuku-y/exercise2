@@ -1,0 +1,35 @@
+Every 1.0s: ps auxwwf                                                                  e82ea7f7a731: Sat Nov  2 03:03:50 2019
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo       1575  0.0  0.1   3992  3224 pts/1    Ss+  03:01   0:00 /bin/bash
+foo        121  0.0  0.1   4000  3232 pts/0    Ss   02:47   0:00 /bin/bash
+foo       1403  0.1  0.1   2988  2388 pts/0    S+   03:00   0:00  \_ watch -n 1 ps auxwwf
+foo       1939  0.0  0.0   2988   440 pts/0    S+   03:03   0:00      \_ watch -n 1 ps auxwwf
+foo       1940  0.0  0.0   2384   696 pts/0    S+   03:03   0:00          \_ sh -c ps auxwwf
+foo       1941  0.0  0.1   7636  2768 pts/0    R+   03:03   0:00              \_ ps auxwwf
+root         1  0.0  0.2   5988  4452 ?        Ss   02:31   0:00 httpd -DFOREGROUND
+daemon       7  0.0  0.1   5672  2560 ?        S    02:31   0:00 httpd -DFOREGROUND
+daemon       8  0.0  0.1 1210776 3628 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon       9  0.0  0.1 1210712 3620 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      10  0.0  0.1 1210648 3632 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      93  0.0  0.1 1210776 3636 ?        Sl   02:46   0:00 httpd -DFOREGROUND
+
+Every 1.0s: ps auxwwf                                                                  e82ea7f7a731: Sat Nov  2 03:04:04 2019
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo       1575  0.0  0.1   3992  3224 pts/1    Ss   03:01   0:00 /bin/bash
+foo       1966  1.2  0.7  21536 14520 pts/1    S+   03:03   0:00  \_ /usr/bin/python3 ./app.py
+foo        121  0.0  0.1   4000  3232 pts/0    Ss   02:47   0:00 /bin/bash
+foo       1403  0.1  0.1   2988  2388 pts/0    S+   03:00   0:00  \_ watch -n 1 ps auxwwf
+foo       1979  0.0  0.0   2988   440 pts/0    S+   03:04   0:00      \_ watch -n 1 ps auxwwf
+foo       1980  0.0  0.0   2384   756 pts/0    S+   03:04   0:00          \_ sh -c ps auxwwf
+foo       1981  0.0  0.1   7636  2720 pts/0    R+   03:04   0:00              \_ ps auxwwf
+root         1  0.0  0.2   5988  4452 ?        Ss   02:31   0:00 httpd -DFOREGROUND
+daemon       7  0.0  0.1   5672  2560 ?        S    02:31   0:00 httpd -DFOREGROUND
+daemon       8  0.0  0.1 1210776 3628 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon       9  0.0  0.1 1210712 3620 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      10  0.0  0.1 1210648 3632 ?        Sl   02:31   0:00 httpd -DFOREGROUND
+daemon      93  0.0  0.1 1210776 3636 ?        Sl   02:46   0:00 httpd -DFOREGROUND
+
+・今度は/bin/bashが親。ターミナル上でapp.pyを実行したから、これが親になった。
+・さっきのcurlは外からのアクセスに応対するデーモンサーバが実行元になっている、という感覚。

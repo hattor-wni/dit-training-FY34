@@ -1,0 +1,34 @@
+
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10632  5364 ?        Ss   01:55   0:00 nginx: master process nginx -g daemon off;
+nginx        6  0.0  0.1  11088  2588 ?        S    01:55   0:00 nginx: worker process
+foo          7  0.0  0.1   4000  3260 pts/0    Ss   02:07   0:00 /bin/bash
+foo         13  0.0  0.1   4000  3348 pts/1    Ss   02:08   0:00 bin/bash
+foo         21  0.0  0.1   4000  3264 pts/2    Ss   02:08   0:00 /bin/bash
+foo         31  0.0  0.0   2296   756 pts/1    S+   02:10   0:00 sleep 30
+foo         32  0.5  0.3  13964  7996 pts/0    S+   02:10   0:00 /usr/bin/python3 ./hello.py
+foo         33  0.0  0.1   7640  2640 pts/2    R+   02:10   0:00 ps auxww
+
+＝＝＝＝＝
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+foo         21  0.0  0.1   4000  3264 pts/2    Ss   02:08   0:00 /bin/bash
+foo         34  0.0  0.1   7640  2768 pts/2    R+   02:10   0:00  \_ ps auxwwf
+foo         13  0.0  0.1   4000  3348 pts/1    Ss   02:08   0:00 bin/bash
+foo         31  0.0  0.0   2296   756 pts/1    S+   02:10   0:00  \_ sleep 30
+foo          7  0.0  0.1   4000  3260 pts/0    Ss   02:07   0:00 /bin/bash
+foo         32  0.2  0.3  13964  7996 pts/0    S+   02:10   0:00  \_ /usr/bin/python3 ./hello.py
+root         1  0.0  0.2  10632  5364 ?        Ss   01:55   0:00 nginx: master process nginx -g daemon off;
+nginx        6  0.0  0.1  11088  2588 ?        S    01:55   0:00 nginx: worker process
+
+＝＝＝＝＝
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10632  5364 ?        Ss   01:55   0:00 nginx: master process nginx -g daemon off;
+nginx        6  0.0  0.1  11088  2588 ?        S    01:55   0:00 nginx: worker process
+foo          7  0.0  0.1   4000  3260 pts/0    Ss   02:07   0:00 /bin/bash
+foo         13  0.0  0.1   4000  3348 pts/1    Ss+  02:08   0:00 bin/bash
+foo         21  0.0  0.1   4000  3264 pts/2    Ss   02:08   0:00 /bin/bash
+foo         32  0.0  0.3  13964  7996 pts/0    S+   02:10   0:00 /usr/bin/python3 ./hello.py
+foo         35  0.0  0.1   7640  2752 pts/2    R+   02:11   0:00 ps auxww

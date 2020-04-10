@@ -1,0 +1,7 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  10632  5364 ?        Ss   01:55   0:00 nginx: master process nginx -g daemon off;
+nginx        6  0.0  0.1  11088  2588 ?        S    01:55   0:00 nginx: worker process
+foo          7  0.0  0.1   4000  3260 pts/0    Ss+  02:07   0:00 /bin/bash
+foo         13  0.0  0.1   4000  3356 pts/1    Ss   02:08   0:00 bin/bash
+foo         21  0.0  0.1   4000  3264 pts/2    Ss+  02:08   0:00 /bin/bash
+foo         47  0.0  0.1   7640  2712 pts/1    R+   02:25   0:00 ps auxww
